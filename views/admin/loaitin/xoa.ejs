@@ -1,0 +1,21 @@
+<div class="modal fade" id="xoaModal<%=i.idloaitin%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <form action="/loaitin/xoa/<%=i.idloaitin%>" method="post" accept-charset="utf-8">
+                <div class="modal-body">
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa loại tin <strong><%=i.tenloaitin%></strong></h5>
+                </div>
+                <div class="modal-footer">
+                   <button class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Xóa</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

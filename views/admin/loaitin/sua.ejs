@@ -1,0 +1,51 @@
+<div class="modal fade" id="myModal<%=i.idloaitin%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <form action="/loaitin/sua/<%=i.idloaitin%>" method="post" accept-charset="utf-8">
+                <div class="modal-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label for="">Tên Loại tin:</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="suaten" value="<%=i.tenloaitin%>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="controlSelect">Lựa chọn thể loại:</label>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <select name="suatheloai" class="form-control" id="controlSelect">
+                                            <option value="<%=i.idtheloai%>"><%=i.tentheloai%></option>
+                                            <% theloai.forEach(function (tl){ %>
+                                                <% if(tl.idtheloai === i.idtheloai){%>
+                                                    <option value="<%=tl.idtheloai%>" style="display: none;"><%=tl.tentheloai%></option>
+                                                <%} else{%>
+                                                    <option value="<%=tl.idtheloai%>"><%=tl.tentheloai%></option>
+                                                <%}%>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-default">Làm mới</button>
+                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
