@@ -1,0 +1,292 @@
+a {
+    color: #09c
+}
+
+.header_top {
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #09c
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #09c
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    background-color: #09c;
+    color: #fff
+}
+
+#searchIcon {
+    background-color: #09c;
+    color: #fff
+}
+
+#searchIcon:hover {
+    opacity: 0.75
+}
+
+.navbar-toggle {
+    background-color: #09c;
+    border-color: #09c
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #09c;
+    opacity: 0.75
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff
+}
+
+.latest_newsarea {
+    border-bottom: 2px solid #09c;
+    border-top: 2px solid #09c
+}
+
+.latest_newsarea span {
+    background-color: #09c;
+    color: #fff
+}
+
+.latest_newsarea span:after,
+.latest_newsarea span:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none
+}
+
+.latest_newsarea span:after {
+    border-color: rgba(0, 153, 204, 0);
+    border-left-color: #09c;
+    border-width: 10px;
+    margin-top: -10px
+}
+
+.latest_newsarea span:before {
+    border-color: rgba(0, 153, 204, 0);
+    border-left-color: #09c;
+    border-width: 11px;
+    margin-top: -11px
+}
+
+.news_sticker li a:before {
+    color: #09c
+}
+
+.single_leftbar>h2 span {
+    background-color: #09c
+}
+
+.recent_title:before {
+    color: #09c
+}
+
+.right_slide {
+    background: none repeat scroll 0 0 #09c;
+    color: #fff
+}
+
+.left_slide:hover,
+.right_slide:hover,
+.left_slide:focus,
+.right_slide:focus {
+    background-color: #fff;
+    color: #09c
+}
+
+.carousel-indicators .active {
+    background-color: #09c
+}
+
+.catg_title:before {
+    color: #09c
+}
+
+.category_title a {
+    background-color: #09c;
+    color: #fff
+}
+
+.category_title a:hover {
+    background-color: #09c;
+    color: #fff;
+    text-decoration: none
+}
+
+.sing_commentbox>p:hover {
+    color: #09c
+}
+
+.sing_commentbox>a:hover {
+    color: #09c
+}
+
+.label_nav li a:hover {
+    background-color: #09c;
+    color: #eee;
+    border-color: #09c
+}
+
+.single_footer_top>h2 {
+    border-bottom: 5px solid #09c
+}
+
+.subscribe_mail i {
+    color: #09c
+}
+
+.submit_btn {
+    background-color: #09c;
+    color: #fff
+}
+
+.submit_btn:hover,
+.send_btn:hover {
+    background-color: #0ebcf6;
+    color: #eee
+}
+
+.footer_labels li a:hover,
+.footer_labels li a:focus {
+    background-color: #09c
+}
+
+.send_btn {
+    background-color: #09c !important;
+    color: #fff
+}
+
+.send_btn:hover {
+    background-color: #0ebcf6 !important;
+    color: #eee
+}
+
+.tooltip-inner {
+    border-bottom: 3px solid #09c
+}
+
+.tooltip.top .tooltip-arrow {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #09c
+}
+
+.scrollToTop {
+    background: none repeat scroll 0 0 #09c;
+    border: 1px solid #FFF;
+    color: #FFF;
+    border-radius: 5px
+}
+
+.scrollToTop:hover,
+.scrollToTop:focus {
+    background-color: #fff;
+    border-color: #09c;
+    color: #09c !important
+}
+
+.link_nav li a {
+    color: #09c
+}
+
+.link_nav li a:before {
+    color: #09c
+}
+
+.read_more {
+    background-color: #09c;
+    color: #fff
+}
+
+.read_more:hover,
+.read_more:focus {
+    color: #fff;
+    background-color: #111
+}
+
+.author_name:hover,
+.author_name:focus,
+.post_date:hover,
+.post_date:focus {
+    color: #09c
+}
+
+.single_post_area .author_name,
+.single_post_area .post_date {
+    color: #09c
+}
+
+.single_post_area .author_name:hover,
+.single_post_area .post_date:hover {
+    color: #444
+}
+
+.single_post_area .author_name i,
+.post_date i {
+    color: #252525
+}
+
+.post_title {
+    border-color: #09c;
+    color: #555
+}
+
+.related_post>h2 i {
+    color: #09c
+}
+
+.single_post_content ul li:before {
+    color: #09c
+}
+
+.custom-tabs {
+    background: none repeat scroll 0 0 #09c
+}
+
+.custom-tabs>li>a:hover {
+    background-color: #09c;
+    color: #fff
+}
+
+.custom-tabs>li.active>a,
+.custom-tabs>li.active>a:hover,
+.custom-tabs>li.active>a:focus {
+    border-top: 3px solid #09c
+}
+
+.left_slide {
+    background: none repeat scroll 0 0 #09c
+}
+
+.footer_top {
+    border-top: 5px solid #09c
+}
+
+.slick-prev,
+.slick-next {
+    background: none repeat scroll 0 0 #09c;
+    color: #fff
+}
+
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+    background: #fff;
+    color: #09c !important
+}
+
+.single_post_content blockquote {
+    border-color: #09c
+}
+
+.error_content a:hover {
+    background-color: #09c
+}

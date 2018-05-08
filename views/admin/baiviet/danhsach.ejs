@@ -1,0 +1,125 @@
+<%include ../layout/header%>
+</head>
+
+<body>
+    <div id="wrapper">
+    <%include ../layout/menu%>
+        <div id="page-wrapper">
+            <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">Tin Tức</h1>
+            </div>
+            </div>
+            <% if (error.length > 0) { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+            <% } else if(success.length > 0){ %>
+            <div class="alert alert-success">
+                <%= success %>
+            </div>
+            <% } %>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="/admin/baiviet/them" title="Thêm tin tức mới"><button type="button" class="btn-success btn" style="float: right;" ><i class="fa fa-plus" ></i></button></a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Danh Sách
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Tác giả</th>
+                                        <th>Tóm tắt</th>
+                                        <th>Nội dung</th>
+                                        <th>Ảnh</th>
+                                        <th>Lượt xem</th>
+                                        <th>Loại tin</th>
+                                        <th>Sửa</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% baiviet.forEach(function (i){ %>
+                                        <tr class="gradeC">
+                                            <td>
+                                                <%=i.idbaiviet%>
+                                            </td>
+                                            <td>
+                                                <div class="title">
+                                                    <a class="tieude" href="#" data-toggle="tooltip" data-placement="top" title="<%=i.tieude%>">
+                                                        <%=i.tieude%>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <%=i.tacgia%>
+                                            </td>
+                                            <td>
+                                                <%=i.tomtat%>
+                                            </td>
+                                            <td>
+                                                <%- i.noidung%>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div class="thumbnail" href="#"><img src="/Uploads/Images/<%=i.urlanh%>" width="45" height="45">
+                                                        <span><img src="/uploads/images/<%=i.urlanh%>" with="70" height="70" title="Ảnh <%=i.urlanh%>"></span></div>
+                                                </div>
+                                                
+                                            </td>
+                                            <td>
+                                                <%=i.luotxem%>
+                                            </td>
+                                            <td>
+                                                <%=i.tenloaitin%>
+                                            </td>
+                                            <td>
+                                                <%include sua%>
+                                                    <button class="btn" data-toggle="modal" data-target="#myModal<%=i.baiviet%>">Sửa</button>
+                                            </td>
+                                            <td class="center">
+                                                <%include xoa%>
+                                                    <button class="btn" data-toggle="modal" data-target="#xoaModal<%=i.idbaiviet%>">Xóa</button>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+        </div>
+    </div>
+    <%include ../layout/js%>
+    <!-- DataTables JavaScript -->
+    <script src="/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/admin/dist/js/sb-admin-2.js"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
+</body>
