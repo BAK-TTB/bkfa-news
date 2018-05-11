@@ -7,14 +7,13 @@ const bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
 var messages = require('express-messages')
+const fileUpload = require('express-fileupload')
 const validator = require('express-validator');
 
 var multer = require('multer');
 // var csrf = require('csurf');
 var fs = require('fs');
 var crypto = require('crypto');
-
-
 
 var func = require('./config/functions');
 

@@ -17,6 +17,7 @@
     "express-promise-router": "^3.0.1",
     "express-session": "^1.15.6",
     "express-validator": "^5.1.2",
+    "form-data": "^2.3.2",
     "formidable": "^1.2.1",
     "moment": "^2.22.1",
     "morgan": "~1.9.0",

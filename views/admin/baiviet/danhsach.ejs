@@ -75,7 +75,7 @@
                                             <td>
                                                 <div>
                                                     <div class="thumbnail" href="#"><img src="/Uploads/Images/<%=i.urlanh%>" width="45" height="45">
-                                                        <span><img src="/uploads/images/<%=i.urlanh%>" with="70" height="70" title="Ảnh <%=i.urlanh%>"></span></div>
+                                                        <span><img src="/Uploads/Images/<%=i.urlanh%>" with="70" height="70" title="Ảnh <%=i.urlanh%>"></span></div>
                                                 </div>
                                                 
                                             </td>
@@ -86,8 +86,7 @@
                                                 <%=i.tenloaitin%>
                                             </td>
                                             <td>
-                                                <%include sua%>
-                                                    <button class="btn" data-toggle="modal" data-target="#myModal<%=i.baiviet%>">Sửa</button>
+                                                <a href="/admin/baiviet/sua/<%=i.idbaiviet%>"><button type="button" class="btn">Sửa</i></button></a>
                                             </td>
                                             <td class="center">
                                                 <%include xoa%>

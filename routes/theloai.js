@@ -100,4 +100,3 @@ router.post('/xoa/:id', function(req, res, next) {
 });
 
 module.exports = router
-

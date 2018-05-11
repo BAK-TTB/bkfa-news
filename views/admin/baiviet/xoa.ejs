@@ -1,13 +1,13 @@
-<div class="modal fade" id="xoaModal<%=i.idtheloai%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="xoaModal<%=i.idbaiviet%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
-            <form action="/theloai/xoa/<%=i.idtheloai%>" method="post" accept-charset="utf-8">
+            <form action="/admin/baiviet/xoa/<%=i.idbaiviet%>" method="post" accept-charset="utf-8">
                 <div class="modal-body">
-                    <h5 class="modal-title" id="exampleModalLabel">Xóa thể loại <strong><%=i.tentheloai%></strong></h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa thể loại <strong><%=i.tieude%></strong></h5>
                 </div>
                 <div class="modal-footer">
                    <button class="btn btn-default" data-dismiss="modal">Hủy</button>
