@@ -2,12 +2,28 @@ const Router = require('express-promise-router')
 const validator = require('express-validator');
 const router = new Router()
 const pool = require('../model')
-var bodyParser = require('body-parser')
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+const bodyParser = require('body-parser')
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 router.use(bodyParser.urlencoded({ extended: false }))
 
+// Is Logged
+function adminIsLoggedIn(req, res, next) {
+    if (req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/');
+}
+
+// Is not logged
+function adminNotLoggedIn(req, res, next) {
+    if (!req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/');
+}
+
 /* GET users listing. */
-router.get('/danhsach', function(req, res, next) {
+router.get('/danhsach', adminIsLoggedIn, function(req, res, next) {
     (async() => {
         const client = await pool.connect()
         let error = req.flash('error');
@@ -17,6 +33,7 @@ router.get('/danhsach', function(req, res, next) {
             res.render('admin/theloai/danhsach',{
                 theloai: result.rows,
                 title: 'News_TTB Website',
+                user : req.user,
                 error: error,
                 success: success
             });
@@ -27,7 +44,7 @@ router.get('/danhsach', function(req, res, next) {
 });
 
 
-router.post('/sua/:id', function(req, res, next) {
+router.post('/sua/:id', adminIsLoggedIn, function(req, res, next) {
     req.checkBody('suaten', 'Tên thể loại không hợp lệ, vui lòng kiểm tra lại').notEmpty();
     let errors = req.validationErrors();
 
@@ -56,7 +73,7 @@ router.post('/sua/:id', function(req, res, next) {
     }
 });
 
-router.post('/them', function(req, res, next) {
+router.post('/them', adminIsLoggedIn, function(req, res, next) {
     req.checkBody('themten', 'Tên thể loại không hợp lệ, vui lòng kiểm tra lại').notEmpty();
     let errors = req.validationErrors();
 
@@ -85,7 +102,7 @@ router.post('/them', function(req, res, next) {
     }
 });
 
-router.post('/xoa/:id', function(req, res, next) {
+router.post('/xoa/:id', adminIsLoggedIn, function(req, res, next) {
     const id = req.params.id;
     (async() => {
         const client = await pool.connect()

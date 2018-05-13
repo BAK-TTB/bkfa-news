@@ -1,3 +1,113 @@
+<style>
+.modal-header {
+    padding: 0;
+}
+
+.modal-header .close {
+    padding: 10px 15px;
+}
+
+.modal-header ul {
+    border: none;
+}
+
+.modal-header ul li {
+    margin: 0;
+}
+
+.modal-header ul li a {
+    border: none;
+    border-radius: 0;
+}
+
+.modal-header ul li.active a {
+    color: #e12f27;
+}
+
+.modal-header ul li a:hover {
+    border: none;
+}
+
+.modal-header ul li a span {
+    margin-left: 10px;
+}
+
+.modal-body .form-group {
+    margin-bottom: 10px;
+}
+
+.btn-fb {
+    color: #fff;
+    background-color: #3b5998;
+    width: 100px;
+}
+
+.btn-fb:hover {
+    color: #fff;
+    background-color: #496ebc
+}
+
+.btn-tw {
+    color: #fff;
+    background-color: #55acee;
+    width: 100px;
+}
+
+.btn-tw:hover {
+    color: #fff;
+    background-color: #59b5fa;
+}
+
+/*information*/
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,1);
+}
+
+#login-dp table tr td{
+    padding: 5px;
+}
+
+#login-dp .help-block{
+    font-size:12px    
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+#login-dp .social-buttons a{
+    width: 49%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.btn-setting {
+    color: #fff;
+    background-color: #3b5998;
+}
+
+.btn-setting:hover {
+    color: #fff;
+    background-color: #496ebc
+}
+
+.btn-logout {
+    color: #fff;
+    background-color: #55acee;
+}
+
+.btn-logout:hover {
+    color: #fff;
+    background-color: #59b5fa;
+}
+</style>
 <header id="header">
     <div class="header_top">
         <nav class="navbar navbar-default" role="navigation">
@@ -7,11 +117,166 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav custom_nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Shortcodes</a></li>
-                        <li><a href="pages/category-archive.html">Archive</a></li>
+                        <li>
+                            <a href="">
+                                <%= __('Home') %>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <%= __('Category') %><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
                         <li><a href="#">Contact</a></li>
+                        <li><a href="#">About</a></li>
                         <li><a href="pages/404.html">404 Page</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a id="cookies" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/vi.png" alt="Việt Nam"> Vietnamese <i class="fa fa-caret-down"></i></a>
+                            <ul class="dropdown-menu language">
+                                <li><a href="/change-lang/en"><span><img src="/images/en.png" alt=""></span> English</a> </li>
+                                <li><a href="/change-lang/vi"><span><img src="/images/vi.png" alt=""></span> Vietnamese</a> </li>
+                            </ul>
+                            <script>
+                            var x = document.cookie;
+                            var a = document.getElementById('cookies');
+                            if (x == 'lang=vi') {
+                                a.innerHTML = "<img src='/images/vi.png' alt='Việt Nam'> Vietnamese <i class='fa fa-caret-down'></i>";
+                            } else if (x == 'lang=en') {
+                                a.innerHTML = "<img src='/images/en.png' alt='English'> English <i class='fa fa-caret-down'></i>";
+                            }
+                            </script>
+                        </li>
+                        <% if(user){%>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user"></span> <%= user.tenthanhvien %> <i class="fa fa-caret-down"></i></a>
+                                <ul id="login-dp" class="dropdown-menu">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div style="text-align: center;"><b><i class="fa fa-list-alt" aria-hidden="true"></i> Thông tin tài khoản</b></div>
+                                                <br>
+                                                <table align="center">
+                                                    <tr>
+                                                        <td><i class="fa fa-envelope fa" aria-hidden="true"></i></td>
+                                                        <td>&nbsp&nbsp<%= user.email %></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
+                                                        <td>&nbsp&nbsp<%= user.tenthanhvien %></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="bottom text-center">
+                                                <div class="social-buttons">
+                                                    <a href="#" class="btn btn-setting"><i class="fa fa-cog"></i> Setting</a>
+                                                    <a href="/thanh-vien/dang-xuat" class="btn btn-logout"><i class="fa fa-power-off"></i> Logout</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <%} else{%>
+                                <li><a href="#" data-toggle="modal" data-target=".login-register-form"><span class="fa fa-user"></span> Login - Register</a>
+                                    <!-- Login / Register Modal-->
+                                    <div class="modal fade login-register-form" role="dialog">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">
+                                                        <span class="glyphicon glyphicon-remove"></span>
+                                                    </button>
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active"><a data-toggle="tab" href="#login-form"> Login <span class="glyphicon glyphicon-user"></span></a></li>
+                                                        <li><a data-toggle="tab" href="#registration-form"> Register <span class="glyphicon glyphicon-pencil"></span></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="tab-content">
+                                                        <div id="login-form" class="tab-pane fade in active">
+                                                            <div class="social-buttons" align="center">
+                                                                <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                                                <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                                            </div>
+                                                            <br>
+                                                            <form action="/thanh-vien/dang-nhap" method="POST">
+                                                                <div class="form-group">
+                                                                    <label for="email">Email:</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="pwd">Password:</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                                                    </div>
+                                                                    <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" name="remember"> Remember me</label>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div id="registration-form" class="tab-pane fade">
+                                                            <form action="/thanh-vien/dang-ky" method="POST">
+                                                                <div class="form-group">
+                                                                    <label for="name">Your Name:</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                                                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="newemail">Email:</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="newpwd">Password:</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="newpwd">Confirm Password:</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                                        <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group">
+                                                                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <%}%>
                     </ul>
                 </div>
             </div>
@@ -32,6 +297,11 @@
         <div class="logo_area"><a class="logo" href="#"><b>S</b>ybarMagazine <span>A Pro Magazine Theme</span></a></div>
         <div class="top_addarea"><a href="#"><img src="/images/img/addbanner.jpg" alt=""></a></div>
     </div>
+    <% if (error.length > 0) { %>
+        <div class="alert alert-danger">
+            <%= error %>
+        </div>
+        <% } %>
 </header>
 <div class="latest_newsarea"> <span>Latest News</span>
     <ul id="ticker01" class="news_sticker">

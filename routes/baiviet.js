@@ -45,8 +45,24 @@ function checkFileType(file, cb){
   }
 }
 
+// Is Logged
+function adminIsLoggedIn(req, res, next) {
+    if (req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/');
+}
+
+// Is not logged
+function adminNotLoggedIn(req, res, next) {
+    if (!req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/');
+}
+
 /* GET users listing. */
-router.get('/danhsach', function(req, res, next) {
+router.get('/danhsach', adminIsLoggedIn, function(req, res, next) {
     (async() => {
         const client = await pool.connect()
         let error = req.flash('error');
@@ -58,6 +74,7 @@ router.get('/danhsach', function(req, res, next) {
                 baiviet: result.rows,
                 loaitin: loaitin.rows,
                 title: 'News_TTB Website',
+                user : req.user,
                 error: error,
                 success: success
             });
@@ -67,7 +84,7 @@ router.get('/danhsach', function(req, res, next) {
     })().catch(e => console.log(e.stack))
 });
 
-router.get('/them', function(req, res, next){
+router.get('/them', adminIsLoggedIn, function(req, res, next){
     (async() => {
         const client = await pool.connect()
         let error = req.flash('error');
@@ -80,6 +97,7 @@ router.get('/them', function(req, res, next){
                 theloai: theloai.rows,
                 loaitin: loaitin.rows,
                 title: 'News_TTB Website',
+                user : req.user,
                 error: error,
                 //err: err,
                 success: success
@@ -90,7 +108,7 @@ router.get('/them', function(req, res, next){
     })().catch(e => console.log(e.stack))
 });
 
-router.post('/thembv', function(req, res, next) {
+router.post('/thembv', adminIsLoggedIn, function(req, res, next) {
     upload(req, res, function(err){
         req.checkBody('tieude', 'Tiêu đề bài viết không hợp lệ, vui lòng kiểm tra lại!').notEmpty();
         req.checkBody('tacgia', 'Bài viết của ai?').notEmpty();
@@ -140,7 +158,7 @@ router.post('/thembv', function(req, res, next) {
     });
 });
 
-router.get('/sua/:id', function(req, res, next){
+router.get('/sua/:id', adminIsLoggedIn, function(req, res, next){
     (async() => {
         const client = await pool.connect()
         let error = req.flash('error');
@@ -155,6 +173,7 @@ router.get('/sua/:id', function(req, res, next){
                 loaitin: loaitin.rows,
                 baiviet: result.rows[0],
                 title: 'News_TTB Website',
+                user : req.user,
                 error: error,
                 success: success
             });
@@ -164,7 +183,7 @@ router.get('/sua/:id', function(req, res, next){
     })().catch(e => console.log(e.stack))
 });
 
-router.post('/sua/:id', function(req, res, next) {
+router.post('/sua/:id', adminIsLoggedIn, function(req, res, next) {
     upload(req, res, function(err){
         req.checkBody('tieude', 'Tiêu đề bài viết không hợp lệ, vui lòng kiểm tra lại!').notEmpty();
         req.checkBody('tacgia', 'Bài viết của ai?').notEmpty();
@@ -245,7 +264,7 @@ router.post('/sua/:id', function(req, res, next) {
     });
 });
 
-router.post('/xoa/:id', function(req, res, next) {
+router.post('/xoa/:id', adminIsLoggedIn, function(req, res, next) {
     const id = req.params.id;
     (async() => {
         const client = await pool.connect()

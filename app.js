@@ -4,18 +4,21 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-var session = require('express-session');
-var flash = require('connect-flash');
-var messages = require('express-messages')
-const fileUpload = require('express-fileupload')
+const i18n = require('i18n');
+const ejs = require('ejs');
+const session = require('express-session');
+const flash = require('connect-flash');
+const messages = require('express-messages')
 const validator = require('express-validator');
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 
-var multer = require('multer');
+const multer = require('multer');
 // var csrf = require('csurf');
-var fs = require('fs');
-var crypto = require('crypto');
+const fs = require('fs');
+const crypto = require('crypto');
 
-var func = require('./config/functions');
+const func = require('./config/functions');
 
 const app = express();
 // view engine setup
@@ -28,8 +31,23 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(validator());
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+
+app.use(i18n.init);
+// Languages
+i18n.configure({
+  locales:['en', 'vi'],
+  defaultLocale: 'vi',
+  directory: __dirname + '/languages',
+  cookie: 'lang'
+});
+
+app.use('/change-lang/:lang', (req, res) => { 
+      res.cookie('lang', req.params.lang, { maxAge: 900000 });
+      console.log(req.cookies.lang);
+      res.redirect('back');
+});
 
 app.use(session({
   secret: 'ma-bi-mat-tu-dat',
@@ -42,6 +60,9 @@ app.use(session({
 //   app.use(express.session({ cookie: { maxAge: 60000 }}));
 //   app.use(flash());
 // });
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(flash());
 app.use(function (req, res, next) {

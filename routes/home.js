@@ -3,7 +3,13 @@ const router = new Router()
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  	res.render('pages/layouts/index', { title: 'TTB' });
+	let error = req.flash('error');
+	let user = null;
+  	res.render('pages/layouts/index', { 
+  		title: 'TTB',
+  		error: error,
+  		user: user
+  	});
 });
 
 router.get('/file-manager.html', function(req, res, next) {
