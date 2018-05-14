@@ -1,20 +1,27 @@
 <footer id="footer">
     <div class="footer_top">
-        <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="single_footer_top wow fadeInLeft">
-                <h2>Follow By Email</h2>
+                <h2>Thông tin</h2>
                 <div class="subscribe_area">
-                    <p>"Subscribe here to get our newsletter, it is safe just Put your Email and click subscribe"</p>
-                    <form action="#">
-                        <div class="subscribe_mail">
-                            <input class="form-control" type="email" placeholder="Email Address">
-                            <i class="fa fa-envelope"></i></div>
-                        <input class="submit_btn" type="submit" value="Submit">
-                    </form>
+                    <p>Số 1, Đại Cồ Việt, Đại học Bách Khoa Hà Nội</p>
+                    <p>BKFA-NEWS</p>
+                    <p>Phone: (+84) 96 105 6808</p>
+                    <p>Email: <a href="mailto:bkfa.com@gmail.com" class="">bkfa.com@gmail.com</a></p>
+                    <br>
+                    <div class="footer_bottom_left">
+                        <ul>
+                            <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Googel+" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Youtube" href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Rss" href="#"><i class="fa fa-rss"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6">
+        <!-- <div class="col-lg-3 col-md-3 col-sm-6">
             <div class="single_footer_top wow fadeInLeft">
                 <h2>Popular Post</h2>
                 <ul class="catg3_snav ppost_nav">
@@ -35,22 +42,18 @@
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6">
+        </div> -->
+        <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="single_footer_top wow fadeInRight">
-                <h2>Labels</h2>
+                <h2>Loại tin</h2>
                 <ul class="footer_labels">
-                    <li><a href="#">Comedy</a></li>
-                    <li><a href="#">Arts</a></li>
-                    <li><a href="#">Cinema</a></li>
-                    <li><a href="#">Nature</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Tourism</a></li>
-                    <li><a href="#">Videos</a></li>
+                    <% loaitin.forEach(function (i){%>
+                        <li><a href="#"><%= i.tenloaitin%></a></li>
+                    <%}) %>
                 </ul>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="single_footer_top wow fadeInRight">
                 <h2>Contact Form</h2>
                 <form action="#" class="contact_form">
@@ -67,16 +70,7 @@
     </div>
     <div class="footer_bottom">
         <div class="footer_bottom_left">
-            <p>Copyright &copy; 2045</p>
-        </div>
-        <div class="footer_bottom_right">
-            <ul>
-                <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Googel+" href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Youtube" href="#"><i class="fa fa-youtube"></i></a></li>
-                <li><a class="tootlip" data-toggle="tooltip" data-placement="top" title="Rss" href="#"><i class="fa fa-rss"></i></a></li>
-            </ul>
+            <p>Copyright &copy; TTB - 2018</p>
         </div>
     </div>
 </footer>

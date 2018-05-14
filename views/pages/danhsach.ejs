@@ -1,0 +1,110 @@
+<%include layouts/header%>
+    </head>
+
+    <body>
+        <div id="preloader">
+            <div id="status">&nbsp;</div>
+        </div>
+        <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+        <div class="container">
+          <div class="box_wrapper">
+
+            <%include layouts/menu%>
+
+            <% if (error.length > 0) { %>
+               <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+
+            <section id="contentbody">
+                <div class="row">
+                    <div class="col-lg-8 col-md-7 col-sm-8 col-xs-12">
+                        <br>
+                        <div class="row">
+                            <div class="middle_bar">
+                                <div class="single_post_area">
+                                    <ol class="breadcrumb">
+                                        <li><a href="#"><i class="fa fa-home"></i>Home<i class="fa fa-angle-right"></i></a></li>
+                                        <li class="active"><%= danhsach[0].tenloaitin%></li>
+                                    </ol>
+                                    <div class="col-md-12">
+                                        <style>
+                                            .catg8_snav li {
+                                            border-top: 1px solid #f1f1f1;
+                                            display: block;
+                                            padding-top: 15px;
+                                            padding-bottom: 20px;
+                                        }
+
+                                        .catg8_snav .media-left {
+                                            width: 400px;
+                                            height: 260px
+                                        }
+
+                                        .catg8_snav .media-left:hover {
+                                            opacity: 0.75
+                                        }
+
+                                        .catg8_snav .media-left>img {
+                                            width: 100%;
+                                            height: 100%
+                                        }
+
+                                        .catg9_nav li {
+                                            border-top: medium none;
+                                            float: left;
+                                            padding-bottom: 20px;
+                                            padding-top: 5px;
+                                            width: 100%
+                                        }
+                                        @media(max-width:991px) {
+                                            .catg8_snav .media-left {
+                                                width: 300px;
+                                                height: 160px
+                                            }
+                                        }
+
+                                        @media(max-width:480px) {
+                                            .catg8_snav .media-left {
+                                                width: 150px;
+                                                height: 70px
+                                            }
+                                        }
+                                        </style>
+                                        <div class="single_category wow fadeInDown">
+                                            <div class="single_category_inner">
+                                                <ul class="catg8_snav catg9_nav">
+                                                    <% danhsach.forEach(function (i){%>
+                                                    <li>
+                                                        <div class="media"> <a href="#" class="media-left"> <img alt="" src="/Uploads/Images/<%=i.urlanh%>" class="img-responsive"> </a>
+                                                            <div class="media-body"> <a href="#" class="catg_title"><%= i.tieude%></a>
+                                                                <div class="sing_commentbox">
+                                                                    <p><i class="fa fa-calendar"></i><%= i.ngaydang%></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <%}) %>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="social_area wow fadeInLeft">
+                                        <ul>
+                                            <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                            <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                            <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                                            <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                                            <li><a href="#"><span class="fa fa-pinterest"></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%include layouts/cotphai%>
+                </div>
+            </section>
+            <%include layouts/footer%>
+            </div>
+          </div>
+        <%include layouts/js%>

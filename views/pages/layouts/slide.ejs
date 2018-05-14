@@ -1,34 +1,23 @@
+<style>
+.signle_iteam a {
+    text-decoration: none;
+}
+
+.signle_iteam a:hover {
+    color: #1EF8F0;
+}
+</style>
 <div class="thumbnail_slider_area">
     <div class="owl-carousel">
-        <div class="signle_iteam"> <img src="/images/img/395x396.jpg" alt="">
+        <% slide.forEach(function (i){%>
+        <div class="signle_iteam"> <img src="/Uploads/Images/<%=i.urlanh%>" alt="" style="height: 396px;" class="img-responsive">
             <div class="sing_commentbox slider_comntbox">
-                <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                <a href="#"><i class="fa fa-comments"></i>20 Comments</a></div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a></div>
-        <div class="signle_iteam"> <img src="/images/img/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-                <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                <a href="#"><i class="fa fa-comments"></i>20 Comments</a></div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a></div>
-        <div class="signle_iteam"> <img src="/images/img/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-                <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                <a href="#"><i class="fa fa-comments"></i>20 Comments</a></div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a></div>
-        <div class="signle_iteam"> <img src="/images/img/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-                <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                <a href="#"><i class="fa fa-comments"></i>20 Comments</a></div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a></div>
-        <div class="signle_iteam"> <img src="/images/img/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-                <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                <a href="#"><i class="fa fa-comments"></i>20 Comments</a></div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a></div>
-        <div class="signle_iteam"> <img src="/images/img/395x396.jpg" alt="">
-            <div class="sing_commentbox slider_comntbox">
-                <p><i class="fa fa-calendar"></i>19 Nov 2045</p>
-                <a href="#"><i class="fa fa-comments"></i>20 Comments</a></div>
-            <a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a></div>
+                <p><i class="fa fa-calendar"></i><%= i.ngaydang%></p>
+                <br>
+                <p><i class="fa fa-eye"></i><%= i.luotxem%></p>
+            </div>
+            <a class="slider_tittle" href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>"><%= i.tieude%></a>
+        </div>
+        <%})%>
     </div>
 </div>

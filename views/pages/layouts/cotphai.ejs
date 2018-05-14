@@ -1,184 +1,71 @@
-<div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+<br>
+<div class="col-lg-4 col-md-3 col-sm-12 col-xs-12" >
     <div class="row">
         <div class="right_bar">
             <div class="single_leftbar wow fadeInDown">
                 <h2><span>Popular Post</span></h2>
                 <div class="singleleft_inner">
                     <ul class="catg3_snav ppost_nav wow fadeInDown">
+                        <% popularPost.forEach(function (i){%>
                         <li>
-                            <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/img/70x70.jpg"> </a>
-                                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
+                            <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/Uploads/Images/<%=i.urlanh%>"> </a>
+                                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> <%= i.tieude%></a></div>
                             </div>
                         </li>
-                        <li>
-                            <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/img/70x70.jpg"> </a>
-                                <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/img/70x70.jpg"> </a>
-                                <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media"> <a href="#" class="media-left"> <img alt="" src="/images/img/70x70.jpg"> </a>
-                                <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media"> <a href="#" class="media-left"> <img alt="" src="/images/img/70x70.jpg"> </a>
-                                <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media"> <a href="#" class="media-left"> <img alt="" src="/images/img/70x70.jpg"> </a>
-                                <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media"> <a href="#" class="media-left"> <img alt="" src="/images/img/70x70.jpg"> </a>
-                                <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media"> <a href="#" class="media-left"> <img alt="" src="/images/img/70x70.jpg"> </a>
-                                <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media"> <a href="#" class="media-left"> <img alt="" src="/images/img/70x70.jpg"> </a>
-                                <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media"> <a href="#" class="media-left"> <img alt="" src="/images/img/70x70.jpg"> </a>
-                                <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                            </div>
-                        </li>
+                        <%}) %>
                     </ul>
                 </div>
             </div>
             <div class="single_leftbar wow fadeInDown">
                 <h2><span>Side Ad</span></h2>
-                <div class="singleleft_inner"> <a href="#"><img alt="" src="/images/img/262x218.jpg"></a></div>
+                <div class="singleleft_inner">
+                    <div id="fb-root"></div>
+                    <script>
+                    (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=204934146962428&autoLogAppEvents=1';
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                    </script>
+                    <div class="fb-page" data-href="https://www.facebook.com/TTB-Home-537678426586401/" data-width="360" data-height="215" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/TTB-Home-537678426586401/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/TTB-Home-537678426586401/">BKFA Team</a></blockquote>
+                    </div>
+                </div>
             </div>
             <div class="single_leftbar wow fadeInDown">
                 <ul class="nav nav-tabs custom-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Most Popular</a></li>
                     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Most Reader</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Recent Comment</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="home">
                         <ul class="catg3_snav ppost_nav wow fadeInDown">
+                            <% mostPopular.forEach(function (i){%>
                             <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
+                                <div class="media"> <a class="media-left" href="#"> <img src="/Uploads/Images/<%=i.urlanh%>" alt=""> </a>
+                                    <div class="media-body"> <a class="catg_title" href="#"> <%= i.tieude%></a></div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
+                            <%}) %>
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="profile">
                         <ul class="catg3_snav ppost_nav wow fadeInDown">
+                            <% mostReader.forEach(function (i){%>
                             <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
+                                <div class="media"> <a class="media-left" href="#"> <img src="/Uploads/Images/<%=i.urlanh%>" alt=""> </a>
+                                    <div class="media-body"> <a class="catg_title" href="#"> <%= i.tieude%></a></div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="messages">
-                        <ul class="catg3_snav ppost_nav wow fadeInDown">
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/images/img/70x70.jpg" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
-                                </div>
-                            </li>
+                            <%}) %>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="single_leftbar wow fadeInDown">
+           <!--  <div class="single_leftbar wow fadeInDown">
                 <h2><span>Blog Archive</span></h2>
                 <div class="singleleft_inner">
                     <div class="blog_archive">
@@ -204,15 +91,15 @@
                         <li><a href="#">Nature</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
             <div class="single_leftbar wow fadeInDown">
                 <h2><span>Links</span></h2>
                 <div class="singleleft_inner">
                     <ul class="link_nav">
                         <li><a href="#">Blog Home</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="#">Error Page</a></li>
-                        <li><a href="#">Wpfreeware</a></li>
+                        <li><a href="#">Page</a></li>
+                        <li><a href="#">Tewer Account</a></li>
                         <li><a href="#">Facebook Account</a></li>
                     </ul>
                 </div>

@@ -8,8 +8,15 @@
         <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
         <div class="container">
           <div class="box_wrapper">
+
             <%include menu%>
+
+            <% if (error.length > 0) { %>
+               <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+
             <%include slide%>
+
             <section id="contentbody">
               <div class="row">
                 <%include ../trangchu%>

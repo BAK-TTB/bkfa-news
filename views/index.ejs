@@ -1,29 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plugin imagebrowser ckeditor for nodejs</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+    <title>BKFA-News</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/li-scroller.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!--[if lt IE 9]>
+	<script src="assets/js/html5shiv.min.js"></script>
+	<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
 </head>
 
 <body>
-	<div class="container">
-		<h2>Như CC</h2>
-		<textarea id="ckeditor"></textarea>
-	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-	
-	<script type="text/javascript">
-		var roxyFileman = '/file-manager.html?integration=ckeditor';
-	  	CKEDITOR.replace('ckeditor', {
-	  		filebrowserBrowseUrl:roxyFileman, 
-           	filebrowserImageBrowseUrl:roxyFileman+'&type=image',
-           	removeDialogTabs: 'link:upload;image:upload'
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="container">
+        <div class="box_wrapper">
+
+			<%include pages/layouts/menu%>
+
+			<% if (error.length > 0) { %>
+			<div class="alert alert-danger">
+				<%= error %>
+			</div>
+			<% } %>
+			<%include pages/layouts/slide%>
+			<section id="contentbody">
+			    <div class="row">
+			        <%- body%>
+			        <%include pages/layouts/cotphai%>
+			    </div>
+			</section>
+			<%include pages/layouts/footer%>
+        </div>
+    </div>
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/wow.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/slick.min.js"></script>
+        <script src="/assets/js/jquery.li-scroller.1.0.js"></script>
+        <script src="/assets/js/custom.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('.dropdown-submenu a.test').on("click", function(e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
         });
-	</script>
+        </script>
 </body>
+
 </html>
