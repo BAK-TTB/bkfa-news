@@ -1,21 +1,123 @@
-<div class="modal fade" id="myModal<%=i.idtheloai%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+<%include ../partials/header%>
+    <script src="/ckeditor/ckeditor.js"></script>
+    </head>
+
+    <body>
+        <div id="wrapper">
+        <%include ../partials/menu%>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">Tin Tức</h1>
+                    </div>
+                </div>
+                <% if (error.length > 0) { %>
+                <div class="alert alert-danger">
+                    <%= error %>
+                </div>
+                <% } else if(success.length > 0){ %>
+                <div class="alert alert-success">
+                    <%= success %>
+                </div>
+                <% } %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-block">
+                                <form data-parsley-validate id="uploadimage" enctype="multipart/form-data" action="/admin/baiviet/sua/<%=baiviet.idbaiviet%>" method="post">
+                                    <div class="form-group">
+                                        <label>Tiêu đề</label>
+                                        <input class="form-control" name="tieude" placeholder="Nhập vào tiêu đề" value="<%=baiviet.tieude%>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tác giả</label>
+                                        <input id="test" class="form-control" name="tacgia" placeholder="Tác giả" value="<%=baiviet.tacgia%>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Loại tin</label>
+                                        <select name="loaitin" class="form-control" id="controlSelect">
+                                            <option value="<%=baiviet.idloaitin%>"><%=baiviet.tenloaitin%></option>
+                                            <% loaitin.forEach(function (lt){ %>
+                                                <% if(lt.idloaitin === baiviet.idloaitin){%>
+                                                    <option value="<%=lt.idloaitin%>" style="display: none;"><%=lt.tenloaitin%></option>
+                                                <%} else{%>
+                                                    <option value="<%=lt.idloaitin%>"><%=lt.tenloaitin%></option>
+                                                <%}%>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tóm tắt</label>
+                                        <textarea name="tomtat" class="form-control" rows="5"><%=baiviet.tomtat%></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nội dung</label>
+                                        <textarea id="ckeditor" name="noidung" class="form-control" rows="10" id="noidung"><%=baiviet.noidung%></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ảnh</label>
+                                        <br>
+                                        <label>
+                                            <input type="file" class="form-control" name="img" id="file" novalidate/>
+                                        </label>
+                                        <div id="status_upload"></div>
+                                        <div class="preview">
+                                            <div class="imgpreview">
+                                                <img id="previewing" src="/Uploads/Images/<%=baiviet.urlanh%>" width="320" height="230" />
+                                            </div>
+                                            <div class="message"></div>
+                                        </div>
+                                    </div>
+                                    <button type="reset" class="btn btn-default">Làm mới</button>
+                                    <button type="submit" value="Upload" class="btn btn-primary submit">Sửa</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <form action="/theloai/sua/<%=i.idtheloai%>" method="post" accept-charset="utf-8">
-                <div class="modal-body">
-                        <input type="text" class="form-control" name="suaten" value="<%=i.tentheloai%>"> 
-                </div>
-                <div class="modal-footer">
-                    <button type="reset" class="btn btn-default">Làm mới</button>
-                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
-                </div>
-            </form>
         </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
+        <!-- DataTables JavaScript -->
+        <script src="/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+        <script src="/admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="/admin/dist/js/sb-admin-2.js"></script>
+        <!-- ckeditor -->
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script type="text/javascript">
+        var roxyFileman = '/file-manager.html?integration=ckeditor';
+        CKEDITOR.replace('ckeditor', {
+            filebrowserBrowseUrl: roxyFileman,
+            filebrowserImageBrowseUrl: roxyFileman + '&type=image',
+            removeDialogTabs: 'link:upload;image:upload'
+        });
+        </script>
+        <script>
+        var message = document.getElementsByClassName("message")[0];
+        var file_upload = document.getElementById('file');
+        // hiển thị ảnh nếu validation thành công
+        file_upload.addEventListener('change', function(e) {
+            var file = this.files[0];
+            var imagefile = file.type;
+            var match = ["image/jpeg", "image/png", "image/jpg"];
+            if (!((imagefile == match[0]) || (imagefile == match[1]) ||
+                    (imagefile == match[2]))) {
+                message.innerHTML = "File phải có định dạng jpeg, jpg and png";
+                document.getElementById('previewing').style.display = "none";
+                return false;
+            } else {
+                message.innerHTML = "ok em.";
+                var reader = new FileReader();
+                reader.onload = function imageIsLoaded(e) {
+                    var previewing = document.getElementById('previewing');
+                    previewing.style.display = "block";
+                    previewing.setAttribute('src', e.target.result);
+                    previewing.setAttribute('width', '320px');
+                    previewing.setAttribute('height', '230px');
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+        </script>
+    </body>

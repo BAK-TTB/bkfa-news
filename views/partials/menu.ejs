@@ -1,0 +1,211 @@
+<header id="header">
+    <div class="header_top">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav custom_nav">
+                        <li>
+                            <a href="/">
+                                <%= __('Home') %>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <%= __('Category') %><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <% menu.forEach(function (i){%>
+                                <li class="dropdown-submenu">
+                                    <a class="test" tabindex="-1" href="#"> <%= i.tentheloai%></a>
+                                    <ul class="dropdown-menu">
+                                        <% let lt = i.lt.split(':')%>
+                                        <% lt.forEach(function (x){%>
+                                            <li><a tabindex="-1" href="/danh-sach/<%=x%>"><%= x%></a></li>
+                                        <%})%>
+                                    </ul>
+                                </li> 
+                                <%})%>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <%= __('Contact') %>
+                            </a>
+                        </li> 
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a id="cookies" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/vi.png" alt="Việt Nam"> Vietnamese <i class="fa fa-caret-down"></i></a>
+                            <ul class="dropdown-menu language">
+                                <li><a href="/change-lang/en"><span><img src="/images/en.png" alt=""></span> English</a> </li>
+                                <li><a href="/change-lang/vi"><span><img src="/images/vi.png" alt=""></span> Vietnamese</a> </li>
+                            </ul>
+                            <script>
+                            var x = document.cookie;
+                            var a = document.getElementById('cookies');
+                            if (x == 'lang=vi') {
+                                a.innerHTML = "<img src='/images/vi.png' alt='Việt Nam'> Vietnamese <i class='fa fa-caret-down'></i>";
+                            } else if (x == 'lang=en') {
+                                a.innerHTML = "<img src='/images/en.png' alt='English'> English <i class='fa fa-caret-down'></i>";
+                            }
+                            </script>
+                        </li>
+                        <% if(logged){%>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user"></span> <%= user.tenthanhvien %> <i class="fa fa-caret-down"></i></a>
+                            <ul id="login-dp" class="dropdown-menu">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div style="text-align: center;"><b><i class="fa fa-list-alt" aria-hidden="true"></i> Thông tin tài khoản</b></div>
+                                            <br>
+                                            <table align="center">
+                                                <tr>
+                                                    <td><i class="fa fa-envelope fa" aria-hidden="true"></i></td>
+                                                    <td>&nbsp&nbsp
+                                                        <%= user.email %>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
+                                                    <td>&nbsp&nbsp
+                                                        <%= user.tenthanhvien %>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="bottom text-center">
+                                            <div class="social-buttons">
+                                                <a href="#" class="btn btn-setting"><i class="fa fa-cog"></i> Setting</a>
+                                                <a href="/dang-xuat" class="btn btn-logout"><i class="fa fa-power-off"></i> Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <%} else{%>
+                        <li><a href="#" data-toggle="modal" data-target=".login-register-form"><span class="fa fa-user"></span> Login</a>
+                            <!-- Login / Register Modal-->
+                            <div class="modal fade login-register-form" role="dialog">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a data-toggle="tab" href="#login-form"> Login <span class="glyphicon glyphicon-user"></span></a></li>
+                                                <li><a data-toggle="tab" href="#registration-form"> Register <span class="glyphicon glyphicon-pencil"></span></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="tab-content">
+                                                <div id="login-form" class="tab-pane fade in active">
+                                                    <div class="social-buttons" align="center">
+                                                        <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                                        <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                                    </div>
+                                                    <br>
+                                                    <form action="/dang-nhap" method="POST">
+                                                        <div class="form-group">
+                                                            <label for="email">Email:</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="pwd">Password:</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                                            </div>
+                                                            <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" name="remember"> Remember me</label>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div id="registration-form" class="tab-pane fade">
+                                                    <form action="/dang-ky" method="POST">
+                                                        <div class="form-group">
+                                                            <label for="name">Your Name:</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="newemail">Email:</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="newpwd">Password:</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="newpwd">Confirm Password:</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="header_search">
+            <button id="searchIcon"><i class="fa fa-search"></i></button>
+            <div id="shide">
+                <div id="search-hide">
+                    <form action="/tim-kiem" method="POST">
+                        <input type="search" size="40" placeholder="Search here ..." id="inputSearch" name="searchterm" >
+                        <button class="remove" type="submit" id="btnSearch"><span><i class="fa fa-times"></i></span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header_bottom">
+        <div class="logo_area"><a class="logo" href="/"><b>B</b>KFA-NEWS <span><%= __('Website News')%></span></a></div>
+        <div class="top_addarea"><a href="#"><img src="/images/img/addbanner.jpg" alt=""></a></div>
+    </div>
+</header>
+<div class="latest_newsarea"> <span>Tin Mới Nhất</span>
+    <ul id="ticker01" class="news_sticker">
+        <% latestNews.forEach(function (i){%>
+        <li>
+            <a href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>">
+                <%= i.tieude%>
+            </a>
+        </li>
+        <%}) %>
+    </ul>
+</div>

@@ -1,0 +1,23 @@
+<style>
+.signle_iteam a {
+    text-decoration: none;
+}
+
+.signle_iteam a:hover {
+    color: #1EF8F0;
+}
+</style>
+<div class="thumbnail_slider_area">
+    <div class="owl-carousel">
+        <% slide.forEach(function (i){%>
+        <div class="signle_iteam"> <img src="/Uploads/Images/<%=i.urlanh%>" alt="" style="height: 370px;" class="img-responsive">
+            <div class="sing_commentbox slider_comntbox">
+                <p><i class="fa fa-calendar"></i><%= i.ngaydang%></p>
+                <br>
+                <p><i class="fa fa-eye"></i><%= i.luotxem%></p>
+            </div>
+            <a class="slider_tittle" href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>"><%= i.tieude%></a>
+        </div>
+        <%})%>
+    </div>
+</div>

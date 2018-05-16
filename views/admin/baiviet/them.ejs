@@ -1,10 +1,10 @@
-<%include ../layout/header%>
+<%include ../partials/header%>
     <script src="/ckeditor/ckeditor.js"></script>
     </head>
 
     <body>
         <div id="wrapper">
-        <%include ../layout/menu%>
+        <%include ../partials/menu%>
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-md-12">
@@ -23,15 +23,22 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
+                            <style>
+                                label {
+                                    color: #fff;
+                                    font-size: 20px;
+                                    margin-top: 20px; 
+                                }
+                            </style>
                             <div class="card-block">
-                                <form id="uploadimage" enctype="multipart/form-data" action="/admin/baiviet/thembv" method="post">
+                                <form data-parsley-validate id="uploadimage" enctype="multipart/form-data" action="/admin/baiviet/thembv" method="post">
                                     <div class="form-group">
                                         <label>Tiêu đề</label>
-                                        <input class="form-control" name="tieude" placeholder="Nhập vào tiêu đề"></input>
+                                        <input class="form-control" name="tieude" placeholder="Nhập vào tiêu đề">
                                     </div>
                                     <div class="form-group">
                                         <label>Tác giả</label>
-                                        <input class="form-control" name="tacgia" placeholder="Tác giả"></input>
+                                        <input class="form-control" name="tacgia" placeholder="Tác giả">
                                     </div>
                                     <div class="form-group">
                                         <label>Loại tin</label>
@@ -56,14 +63,14 @@
                                         <label>Ảnh</label>
                                         <br>
                                         <label>
-                                            <input type="file" name="file" id="file" required />
+                                            <input type="file" class="form-control" name="img" id="file" required />
                                         </label>
                                         <div id="status_upload"></div>
                                         <div class="preview">
-                                            <div class="imgpreview">
+                                            <div class="imgpreview" align="center">
                                                 <img id="previewing" src="" />
                                             </div>
-                                            <div class="message"></div>
+                                            <div class="message" style="color: #fff;"></div>
                                         </div>
                                     </div>
                                     <button type="reset" class="btn btn-default">Làm mới</button>
@@ -105,7 +112,7 @@
                 document.getElementById('previewing').style.display = "none";
                 return false;
             } else {
-                message.innerHTML = "ok em.";
+                message.innerHTML = "Chấp nhận";
                 var reader = new FileReader();
                 reader.onload = function imageIsLoaded(e) {
                     var previewing = document.getElementById('previewing');

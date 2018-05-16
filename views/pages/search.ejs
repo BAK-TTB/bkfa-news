@@ -1,0 +1,54 @@
+<% layout('../layouts') -%>
+
+<div class="thumbnail_slider_area"></div>
+
+<section id="contentbody">
+  <div class="row">
+
+    <div class="col-lg-8 col-md-7 col-sm-8 col-xs-12">
+        <br>
+        <div class="row">
+            <div class="middle_bar">
+                <div class="single_post_area">
+                    <ol class="breadcrumb">
+                        <li><a href="./"><i class="fa fa-home"></i>Home<i class="fa fa-angle-right"></i></a></li>
+                        <li class="active">Kết quả tìm kiếm</li>
+                    </ol>
+                    <div class="col-md-12">
+                        <div style="text-align: center;"><h2>Tìm thấy <%= danhsach.length%> kết quả</h2></div>
+                        <div class="single_category wow fadeInDown">
+                            <div class="single_category_inner">
+                                <ul class="catg8_snav catg9_nav">
+                                    <% danhsach.forEach(function (i){%>
+                                    <li>
+                                        <div class="media"> <a href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>" class="media-left"> <img alt="" src="/Uploads/Images/<%=i.urlanh%>" class="img-responsive"> </a>
+                                            <div class="media-body"> <a href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>" class="catg_title"><%= i.tieude%></a>
+                                                <div class="sing_commentbox">
+                                                    <p><i class="fa fa-calendar"></i><%= i.ngaydang%></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <%}) %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social_area wow fadeInLeft">
+                        <ul>
+                            <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+                            <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                            <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                            <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                            <li><a href="#"><span class="fa fa-pinterest"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%include ../partials/cotphai%>
+
+  </div>
+</section>
