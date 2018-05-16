@@ -106,4 +106,4 @@ pool.connect( (err, client, done) => {
     })
   );
 
-}); // end pool.connect
+});

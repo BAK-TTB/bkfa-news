@@ -61,7 +61,7 @@ pool.connect( (err, client, done) => {
 /* GET users listing. */
 router.get('/login', function(req, res, next){
 	let error = req.flash('error');
-	res.render('layouts/login', {
+	res.render('admin/partials/login', {
 		title: 'Admin đăng nhập',
 		error: error
 	});
@@ -84,19 +84,14 @@ router.post('/login', passport.authenticate('local-admin-login', {
 	}
 );
 
-router.get('/dang-xuat', function(req, res) {
-  req.logout();
-  res.redirect('/');
-});
-
 router.get('/', adminIsLoggedIn, function(req, res) {
-	res.render('admin/layout/index', {
+	res.render('admin/partials/index', {
 		title: 'TTB',
 		user : req.user
 	});
 });
 
-router.get('/logout', function(req, res) {
+router.get('/dang-xuat', function(req, res) {
 	req.logout();
 	res.redirect('/');
 });

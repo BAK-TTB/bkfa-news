@@ -13,17 +13,24 @@ const validator = require('express-validator');
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 
-const multer = require('multer');
-// var csrf = require('csurf');
-const fs = require('fs');
-const crypto = require('crypto');
-
-const func = require('./config/functions');
-
 const app = express();
+
+//const multer = require('multer');
+// var csrf = require('csurf');
+//const fs = require('fs');
+//const crypto = require('crypto');
+
+//= require('./config/functions');
+require('./config/passport.js');
+require('./model/index.js');
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set("views", "./views");
+app.use(express.static(__dirname + "/public"));
+var engine = require('ejs-locals');
+app.engine('ejs', engine);
+//app.set('views', path.join(__dirname, 'views'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -31,8 +38,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(validator());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(i18n.init);
 // Languages
@@ -60,16 +67,16 @@ app.use(session({
 //   app.use(express.session({ cookie: { maxAge: 60000 }}));
 //   app.use(flash());
 // });
-
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(flash());
 app.use(function (req, res, next) {
   res.locals.messages = messages(req, res);
+  res.locals.logged = req.isAuthenticated();
+  res.locals.user = req.user;
   next();
 });
-
 
 const mountRoutes = require('./routes');
 mountRoutes(app);

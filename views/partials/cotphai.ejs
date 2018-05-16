@@ -3,13 +3,13 @@
     <div class="row">
         <div class="right_bar">
             <div class="single_leftbar wow fadeInDown">
-                <h2><span>Popular Post</span></h2>
+                <h2><span>Tin Tức Phổ Biến</span></h2>
                 <div class="singleleft_inner">
                     <ul class="catg3_snav ppost_nav wow fadeInDown">
                         <% popularPost.forEach(function (i){%>
                         <li>
-                            <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/Uploads/Images/<%=i.urlanh%>"> </a>
-                                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> <%= i.tieude%></a></div>
+                            <div class="media" style="margin-bottom: -20px;"> <a href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>" class="media-left"> <img alt="" src="/Uploads/Images/<%=i.urlanh%>" class="img-responsive" style="height: 40px;"> </a>
+                                <div class="media-body"> <a href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>" class="catg_title"> <%= i.tieude%></a></div>
                             </div>
                         </li>
                         <%}) %>
@@ -37,16 +37,16 @@
             </div>
             <div class="single_leftbar wow fadeInDown">
                 <ul class="nav nav-tabs custom-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Most Popular</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Most Reader</a></li>
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Mới Nhất</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Xem Nhiều</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="home">
                         <ul class="catg3_snav ppost_nav wow fadeInDown">
                             <% mostPopular.forEach(function (i){%>
                             <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/Uploads/Images/<%=i.urlanh%>" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> <%= i.tieude%></a></div>
+                                <div class="media" style="margin-bottom: -20px;"> <a class="media-left" href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>"> <img src="/Uploads/Images/<%=i.urlanh%>" alt="" class="img-responsive" style="height: 40px;"> </a>
+                                    <div class="media-body"> <a class="catg_title" href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>"> <%= i.tieude%></a></div>
                                 </div>
                             </li>
                             <%}) %>
@@ -56,8 +56,8 @@
                         <ul class="catg3_snav ppost_nav wow fadeInDown">
                             <% mostReader.forEach(function (i){%>
                             <li>
-                                <div class="media"> <a class="media-left" href="#"> <img src="/Uploads/Images/<%=i.urlanh%>" alt=""> </a>
-                                    <div class="media-body"> <a class="catg_title" href="#"> <%= i.tieude%></a></div>
+                                <div class="media" style="margin-bottom: -20px;"> <a class="media-left" href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>"> <img src="/Uploads/Images/<%=i.urlanh%>" alt="" class="img-responsive" style="height: 40px;"> </a>
+                                    <div class="media-body"> <a class="catg_title" href="/chi-tiet/<%= i.idloaitin%>/<%= i.idbaiviet%>"> <%= i.tieude%></a></div>
                                 </div>
                             </li>
                             <%}) %>
@@ -65,33 +65,6 @@
                     </div>
                 </div>
             </div>
-           <!--  <div class="single_leftbar wow fadeInDown">
-                <h2><span>Blog Archive</span></h2>
-                <div class="singleleft_inner">
-                    <div class="blog_archive">
-                        <form action="#">
-                            <select>
-                                <option value="">Blog Archive</option>
-                                <option value="">October(20)</option>
-                            </select>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="single_leftbar wow fadeInDown">
-                <h2><span>Labels</span></h2>
-                <div class="singleleft_inner">
-                    <ul class="label_nav">
-                        <li><a href="#">Arts</a></li>
-                        <li><a href="#">Cinema</a></li>
-                        <li><a href="#">Comedy</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Tourism</a></li>
-                        <li><a href="#">Videos</a></li>
-                        <li><a href="#">Nature</a></li>
-                    </ul>
-                </div>
-            </div> -->
             <div class="single_leftbar wow fadeInDown">
                 <h2><span>Links</span></h2>
                 <div class="singleleft_inner">

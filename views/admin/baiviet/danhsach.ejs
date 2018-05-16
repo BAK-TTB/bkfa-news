@@ -1,12 +1,12 @@
-<%include ../layout/header%>
+<%include ../partials/header%>
 </head>
 
 <body>
     <div id="wrapper">
-    <%include ../layout/menu%>
+    <%include ../partials/menu%>
         <div id="page-wrapper">
             <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" align="center">
                 <h1 class="page-header">Tin Tức</h1>
             </div>
             </div>
@@ -21,7 +21,7 @@
             <% } %>
             <div class="row">
                 <div class="col-md-12">
-                    <a href="/admin/baiviet/them" title="Thêm tin tức mới"><button type="button" class="btn-success btn" style="float: right;" ><i class="fa fa-plus" ></i></button></a>
+                    <a href="/admin/baiviet/them" title="Thêm tin tức mới"><button type="button" class="btn-success btn" ><i class="fa fa-plus" ></i></button></a>
                 </div>
             </div>
             <br>
@@ -42,10 +42,10 @@
                                         <th>Tiêu đề</th>
                                         <th>Tác giả</th>
                                         <th>Tóm tắt</th>
-                                        <th>Nội dung</th>
                                         <th>Ảnh</th>
                                         <th>Lượt xem</th>
                                         <th>Loại tin</th>
+                                        <th>Nội dung</th>
                                         <th>Sửa</th>
                                         <th>Xóa</th>
                                     </tr>
@@ -70,9 +70,6 @@
                                                 <%=i.tomtat%>
                                             </td>
                                             <td>
-                                                <%- i.noidung%>
-                                            </td>
-                                            <td>
                                                 <div>
                                                     <div class="thumbnail" href="#"><img src="/Uploads/Images/<%=i.urlanh%>" width="45" height="45">
                                                         <span><img src="/Uploads/Images/<%=i.urlanh%>" with="70" height="70" title="Ảnh <%=i.urlanh%>"></span></div>
@@ -86,11 +83,35 @@
                                                 <%=i.tenloaitin%>
                                             </td>
                                             <td>
-                                                <a href="/admin/baiviet/sua/<%=i.idbaiviet%>"><button type="button" class="btn">Sửa</i></button></a>
+                                                <div>
+                                                    <button class="btn-primary btn" data-toggle="modal" data-target="#chiTiet<%=i.idbaiviet%>"><i class="fa fa-eye" ></i></button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="chiTiet<%=i.idbaiviet%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    <h4 class="modal-title" id="myModalLabel">Chi tiết</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <%- i.noidung%>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                  
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="/admin/baiviet/sua/<%=i.idbaiviet%>"><button type="button" class="btn-info btn" ><i class="fa fa-edit" ></i></button></a>
                                             </td>
                                             <td class="center">
                                                 <%include xoa%>
-                                                    <button class="btn" data-toggle="modal" data-target="#xoaModal<%=i.idbaiviet%>">Xóa</button>
+                                                <button class="btn-danger btn" data-toggle="modal" data-target="#xoaModal<%=i.idbaiviet%>"><i class="fa fa-trash-o" ></i></button>
                                             </td>
                                         </tr>
                                         <% }) %>
@@ -105,7 +126,7 @@
             </div>
         </div>
     </div>
-    <%include ../layout/js%>
+    <%include ../partials/footer%>
     <!-- DataTables JavaScript -->
     <script src="/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>

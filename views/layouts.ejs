@@ -1,0 +1,18 @@
+<%include partials/header%>
+<body>
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="container">
+      <div class="box_wrapper">
+
+        <%include partials/menu%>
+
+        <% if (error.length > 0) { %>
+           <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+
+        <%-body%>
+        
+        <%include partials/footer%>

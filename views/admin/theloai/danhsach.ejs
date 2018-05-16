@@ -1,12 +1,12 @@
-<%include ../layout/header%>
+<%include ../partials/header%>
     </head>
 
     <body>
         <div id="wrapper">
-            <%include ../layout/menu%>
+            <%include ../partials/menu%>
                 <div id="page-wrapper">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" align="center">
                             <h1 class="page-header">Thể Loại</h1>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <%include them%>
-                            <button class="btn" data-toggle="modal" data-target="#myModal">Thêm</button>
+                            <button class="btn-success btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" ></i></button>
                         </div>
                     </div>
                     <br>
@@ -54,11 +54,11 @@
                                                     </td>
                                                     <td>
                                                         <%include sua%>
-                                                            <button class="btn" data-toggle="modal" data-target="#myModal<%=i.idtheloai%>">Sửa</button>
+                                                            <button class="btn-info btn" data-toggle="modal" data-target="#myModal<%=i.idtheloai%>"><i class="fa fa-edit" ></i></button>
                                                     </td>
                                                     <td class="center">
                                                         <%include xoa%>
-                                                            <button class="btn" data-toggle="modal" data-target="#xoaModal<%=i.idtheloai%>">Xóa</button>
+                                                            <button class="btn-danger btn" data-toggle="modal" data-target="#xoaModal<%=i.idtheloai%>"><i class="fa fa-trash-o" ></i></button>
                                                     </td>
                                                 </tr>
                                                 <% }) %>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
         </div>
-        <%include ../layout/js%>
+        <%include ../partials/footer%>
             <!-- DataTables JavaScript -->
             <script src="/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
             <script src="/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
