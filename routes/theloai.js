@@ -104,6 +104,7 @@ router.post('/them', adminIsLoggedIn, function(req, res, next) {
 
 router.post('/xoa/:id', adminIsLoggedIn, function(req, res, next) {
     const id = req.params.id;
+    console.log(id);
     (async() => {
         const client = await pool.connect()
         try {
