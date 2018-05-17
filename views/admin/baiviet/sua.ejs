@@ -23,6 +23,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
+                            <style>
+                                label {
+                                    color: #fff;
+                                    font-size: 20px;
+                                    margin-top: 20px; 
+                                }
+                            </style>
                             <div class="card-block">
                                 <form data-parsley-validate id="uploadimage" enctype="multipart/form-data" action="/admin/baiviet/sua/<%=baiviet.idbaiviet%>" method="post">
                                     <div class="form-group">
@@ -62,10 +69,10 @@
                                         </label>
                                         <div id="status_upload"></div>
                                         <div class="preview">
-                                            <div class="imgpreview">
+                                            <div class="imgpreview" align="center">
                                                 <img id="previewing" src="/Uploads/Images/<%=baiviet.urlanh%>" width="320" height="230" />
                                             </div>
-                                            <div class="message"></div>
+                                            <div class="message" style="color: #fff;"></div>
                                         </div>
                                     </div>
                                     <button type="reset" class="btn btn-default">Làm mới</button>
@@ -107,7 +114,7 @@
                 document.getElementById('previewing').style.display = "none";
                 return false;
             } else {
-                message.innerHTML = "ok em.";
+                message.innerHTML = "Chấp nhận.";
                 var reader = new FileReader();
                 reader.onload = function imageIsLoaded(e) {
                     var previewing = document.getElementById('previewing');
