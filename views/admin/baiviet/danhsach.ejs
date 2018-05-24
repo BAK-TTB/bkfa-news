@@ -45,6 +45,7 @@
                                         <th>Ảnh</th>
                                         <th>Lượt xem</th>
                                         <th>Loại tin</th>
+                                        <th>Nổi bật</th>
                                         <th>Nội dung</th>
                                         <th>Sửa</th>
                                         <th>Xóa</th>
@@ -81,6 +82,13 @@
                                             </td>
                                             <td>
                                                 <%=i.tenloaitin%>
+                                            </td>
+                                            <td>
+                                                <% if(i.noibat == 0){%>
+                                                    <p>Không</p>
+                                                <%} else{%>
+                                                    <p>Có</p>
+                                                <%}%>
                                             </td>
                                             <td>
                                                 <div>
