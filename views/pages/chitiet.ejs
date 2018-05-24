@@ -16,43 +16,23 @@
                         <li class="active"><%= baiviet.tenloaitin%></li>
                     </ol>
                     <h3 class="post_title wow "><%= baiviet.tieude%></h3>
-                    <a href="#" class="author_name"><i class="fa fa-user"></i><%= baiviet.tacgia%></a> <a href="#" class="post_date"><i class="fa fa-clock-o"></i><%= baiviet.ngaydang%></a>
+                    <a href="#" class="author_name"><i class="fa fa-user"></i><%= baiviet.tacgia%></a> <a href="#" class="post_date"><i class="fa fa-clock-o"></i><%= myFunc(baiviet.ngaydang)%></a>
                     <div class="single_post_content">
-                        <img class="img-center" src="/Uploads/Images/<%=baiviet.urlanh%>" alt="">
+                        <img class="img-center" src="/Uploads/Images/<%=baiviet.urlanh%>" alt="" width="640" height="400">
                         <br>
                         <blockquote> <%= baiviet.tomtat%></blockquote>
                         <div><%- baiviet.noidung%></div>
                     </div>
                     <div class="post_footer">
-                        <!-- <ul class="post_pager">
-                            <li class="previous wow fadeInLeftBig">
-                                <a href="">
-                                    <p><i class="fa fa-hand-o-left"></i><strong>Previous</strong></p>
-                                    <span>The best of Sony in a compact waterproof smartphone</span> </a>
-                            </li>
-                            <li class="next wow fadeInRightBig">
-                                <a href="">
-                                    <p><i class="fa fa-hand-o-right"></i><strong>Next</strong></p>
-                                    <span>Proin vel arcu sed nibh faucibus porta non et nibh</span> </a>
-                            </li>
-                        </ul> -->
                     </div>
                     <div class="social_area wow fadeInLeft">
                         <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#bkfa-news#chitiettintuc<%=baiviet.idbaiviet%>" data-width="760" data-numposts="5"></div>
-                        <!-- <ul>
-                            <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                            <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
-                            <li><a href="#"><span class="fa fa-pinterest"></span></a></li>
-                        </ul> -->
-                        
                     </div>
                     <div class="related_post">
                         <h2 class="wow fadeInLeftBig">Related Posts you may like <i class="fa fa-thumbs-o-up"></i></h2>
                         <ul class="recentpost_nav relatedpost_nav wow fadeInDown animated">
                             <% lienquan.forEach(function (i){%>
-                            <li><a href="#"><img alt="" src="/Uploads/Images/<%=i.urlanh%>" style="width: 150px; height: 80px;"></a> <a href="#" class="recent_title">i.tieude</a></li>
+                            <li><a href="#"><img alt="" src="/Uploads/Images/<%=i.urlanh%>" style="width: 150px; height: 80px;"></a> <a href="#" class="recent_title"><%= i.tieude %></a></li>
                             <%})%>
                         </ul>
                     </div>

@@ -62,9 +62,9 @@ router.get('/', function(req, res, next) {
             const theloai2 = await client.query("SELECT bv.* FROM baiviet bv INNER JOIN loaitin lt ON lt.idloaitin = bv.idloaitin INNER JOIN theloai tl ON tl.idtheloai = lt.idtheloai AND tl.idtheloai = 3 ORDER BY bv.ngaydang DESC LIMIT 4")
             const theloai3 = await client.query("SELECT bv.* FROM baiviet bv INNER JOIN loaitin lt ON lt.idloaitin = bv.idloaitin INNER JOIN theloai tl ON tl.idtheloai = lt.idtheloai AND tl.idtheloai = 5 ORDER BY bv.ngaydang DESC LIMIT 4")
             const theloai4 = await client.query("SELECT bv.* FROM baiviet bv INNER JOIN loaitin lt ON lt.idloaitin = bv.idloaitin INNER JOIN theloai tl ON tl.idtheloai = lt.idtheloai AND tl.idtheloai = 2 ORDER BY bv.ngaydang DESC LIMIT 4")
-            const popularPost = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 9")
-            const mostPopular = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 4")
-            const mostReader = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 4")
+            const popularPost = await client.query("SELECT * FROM baiviet WHERE noibat = 1 ORDER BY ngaydang DESC LIMIT 9")
+            const mostPopular = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 9")
+            const mostReader = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 9")
             const loaitin = await client.query("SELECT * FROM loaitin ORDER BY idloaitin DESC")
             res.render('pages/trangchu',{
                 title: 'News_TTB Website',
@@ -93,15 +93,16 @@ router.get('/chi-tiet/:idloaitin/:id', function(req, res, next) {
         const client = await pool.connect();
         let error = req.flash('error');
         try {
+            await client.query("UPDATE baiviet SET luotxem = luotxem + 1 WHERE idbaiviet = " + req.params.id)
             const menu = await client.query("SELECT theloai.*, string_agg(DISTINCT loaitin.tenloaitin, ':') lt FROM theloai INNER JOIN loaitin ON loaitin.idtheloai = theloai.idtheloai GROUP BY theloai.idtheloai")
             const latestNews = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 10")
             const slide = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 6")
-            const popularPost = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 9")
-            const mostPopular = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 4")
-            const mostReader = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 4")
+            const popularPost = await client.query("SELECT * FROM baiviet WHERE noibat = 1 ORDER BY ngaydang DESC LIMIT 9")
+            const mostPopular = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 9")
+            const mostReader = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 9")
             const loaitin = await client.query("SELECT * FROM loaitin ORDER BY idloaitin DESC")
             const result = await client.query('SELECT * FROM baiviet bv INNER JOIN loaitin lt ON lt.idloaitin = bv.idloaitin INNER JOIN theloai tl ON tl.idtheloai = lt.idtheloai AND bv.idbaiviet = ' + req.params.id)
-            const lienquan = await client.query('SELECT * FROM baiviet WHERE idloaitin = ' + req.params.idloaitin + ' AND idbaiviet != ' + req.params.id)
+            const lienquan = await client.query('SELECT * FROM baiviet WHERE idloaitin = ' + req.params.idloaitin + ' AND idbaiviet != ' + req.params.id + 'LIMIT 3')
             res.render('pages/chitiet',{
                 title: 'News_TTB Website',
                 latestNews: latestNews.rows,
@@ -130,9 +131,9 @@ router.get('/danh-sach/:name', function(req, res, next) {
             const menu = await client.query("SELECT theloai.*, string_agg(DISTINCT loaitin.tenloaitin, ':') lt FROM theloai INNER JOIN loaitin ON loaitin.idtheloai = theloai.idtheloai GROUP BY theloai.idtheloai")
             const latestNews = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 10")
             const slide = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 6")
-            const popularPost = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 9")
-            const mostPopular = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 4")
-            const mostReader = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 4")
+            const popularPost = await client.query("SELECT * FROM baiviet WHERE noibat = 1 ORDER BY ngaydang DESC LIMIT 9")
+            const mostPopular = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 9")
+            const mostReader = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 9")
             const loaitin = await client.query("SELECT * FROM loaitin ORDER BY idloaitin DESC")
             const result = await client.query("SELECT * FROM baiviet bv INNER JOIN loaitin lt ON lt.idloaitin = bv.idloaitin AND lt.tenloaitin = '" + req.params.name + "'")
             res.render('pages/danhsach',{
@@ -162,9 +163,9 @@ router.post('/tim-kiem', (req, res, next) => {
             const menu = await client.query("SELECT theloai.*, string_agg(DISTINCT loaitin.tenloaitin, ':') lt FROM theloai INNER JOIN loaitin ON loaitin.idtheloai = theloai.idtheloai GROUP BY theloai.idtheloai")
             const latestNews = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 10")
             const slide = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 6")
-            const popularPost = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 9")
-            const mostPopular = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 4")
-            const mostReader = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 4")
+            const popularPost = await client.query("SELECT * FROM baiviet WHERE noibat = 1 ORDER BY ngaydang DESC LIMIT 9")
+            const mostPopular = await client.query("SELECT * FROM baiviet ORDER BY ngaydang DESC LIMIT 9")
+            const mostReader = await client.query("SELECT * FROM baiviet ORDER BY luotxem DESC LIMIT 9")
             const loaitin = await client.query("SELECT * FROM loaitin ORDER BY idloaitin DESC")
             const result = await client.query("SELECT DISTINCT idbaiviet, tacgia, tieude, tomtat, noidung, urlanh, luotxem, ngaydang, idloaitin FROM baiviet Where (tieude  LIKE '%"+ searchterm +"%') OR (tomtat  LIKE '%"+ searchterm +"%') OR (noidung  LIKE '%"+ searchterm +"%') ORDER BY idbaiviet")
            res.render('pages/search',{

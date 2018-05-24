@@ -112,4 +112,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.locals.myFunc = function(arg){
+  const options = { year: 'numeric', month: 'long', day: '2-digit' };
+  let date = new Date(arg);
+
+  let formattedDate = date.toLocaleDateString('en-US', options);
+  return formattedDate;
+}
+
 module.exports = app;

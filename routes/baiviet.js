@@ -137,12 +137,13 @@ router.post('/thembv', adminIsLoggedIn, function(req, res, next) {
                 const idloaitin = req.body.loaitin;
                 const tomtat = req.body.tomtat;
                 const noidung = req.body.noidung;
+                const noibat = req.body.noibat;
                 const img = req.body.img;
                 (async() => {
                     const client = await pool.connect()
                     try{
                         const result = await client.query('SELECT MAX(idbaiviet) FROM baiviet')
-                        await client.query("INSERT INTO baiviet(idbaiviet, tacgia, tieude, tomtat, noidung, urlanh, luotxem, ngaydang, idloaitin) VALUES("+ result.rows[0].max +"+1, '" + tacgia + "', '" + tieude + "', '" + tomtat + "', '" + noidung + "', '"+ req.file.filename +"', '0', '"+ moment().format() +"', '" + idloaitin + "')")
+                        await client.query("INSERT INTO baiviet(idbaiviet, tacgia, tieude, tomtat, noidung, urlanh, luotxem, ngaydang, idloaitin, noibat) VALUES("+ result.rows[0].max +"+1, '" + tacgia + "', '" + tieude + "', '" + tomtat + "', '" + noidung + "', '"+ req.file.filename +"', '0', '"+ moment().format() +"', '" + idloaitin + "', '" + noibat + "')")
                         req.flash('success', 'Thêm thành công');
                         res.redirect("/admin/baiviet/them");
                     } finally{
@@ -212,12 +213,13 @@ router.post('/sua/:id', adminIsLoggedIn, function(req, res, next) {
                 const idloaitin = req.body.loaitin;
                 const tomtat = req.body.tomtat;
                 const noidung = req.body.noidung;
+                const noibat = req.body.noibat;
                 (async() => {
                     const client = await pool.connect()
                     try{
                        // const img = await client.query("SELECT urlanh FROM baiviet WHERE idbaiviet = " + id)
                        //  urlanh = img.rows[0].urlanh
-                        await client.query("UPDATE baiviet SET tacgia = '"+ tacgia +"', tieude = '" + tieude + "', tomtat = '" + tomtat + "', noidung = '" + noidung + "', idloaitin = '" + idloaitin + "' WHERE idbaiviet = " + id)
+                        await client.query("UPDATE baiviet SET tacgia = '"+ tacgia +"', tieude = '" + tieude + "', tomtat = '" + tomtat + "', noidung = '" + noidung + "', idloaitin = '" + idloaitin + "', noibat = '" + noibat + "' WHERE idbaiviet = " + id)
                         req.flash('success', 'Sửa thành công');
                         res.redirect("/admin/baiviet/danhsach");
                     } finally{
@@ -235,6 +237,7 @@ router.post('/sua/:id', adminIsLoggedIn, function(req, res, next) {
                 const idloaitin = req.body.loaitin;
                 const tomtat = req.body.tomtat;
                 const noidung = req.body.noidung;
+                const noibat = req.body.noibat;
                 //const img = req.body.img;
                 (async() => {
                     const client = await pool.connect()
@@ -248,7 +251,7 @@ router.post('/sua/:id', adminIsLoggedIn, function(req, res, next) {
                                 console.log('successfully deleted');
                             });
                         }
-                        await client.query("UPDATE baiviet SET tacgia = '"+ tacgia +"', tieude = '" + tieude + "', tomtat = '" + tomtat + "', noidung = '" + noidung + "', urlanh = '" + req.file.filename + "', idloaitin = '" + idloaitin + "' WHERE idbaiviet = " + id)
+                        await client.query("UPDATE baiviet SET tacgia = '"+ tacgia +"', tieude = '" + tieude + "', tomtat = '" + tomtat + "', noidung = '" + noidung + "', urlanh = '" + req.file.filename + "', idloaitin = '" + idloaitin + "', noibat = '" + noibat + "' WHERE idbaiviet = " + id)
                         req.flash('success', 'Sửa thành công');
                         res.redirect("/admin/baiviet/danhsach");
                     } finally{

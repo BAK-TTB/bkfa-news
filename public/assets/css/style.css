@@ -647,6 +647,16 @@ a.logo b {
     margin-right: 5px
 }
 
+.xemthem:after {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    content: "";
+    margin-left: 5px
+}
+
 .sing_commentbox {
     float: left;
     display: inline;
